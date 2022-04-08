@@ -7,7 +7,7 @@ const Header = () => {
         <header>
             <Navbar className='py-4' expand="lg">
                 <Container>
-                    <Navbar.Brand href="/home" className='fw-bold'>APARTMENT HUNT</Navbar.Brand>
+                    <Navbar.Brand href="/" className='fw-bold'>APARTMENT HUNT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto align-items-center">
