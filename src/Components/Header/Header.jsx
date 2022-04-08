@@ -17,7 +17,7 @@ const Header = () => {
                         <Nav.Link href="/concerns">Concerns</Nav.Link>
                         <Nav.Link href="/event">Event</Nav.Link>
                         <Nav.Link href="/contact">Contact</Nav.Link> */}
-                        <Button onClick={()=> navigate('login')} className='px-4' variant='primary'>login</Button>
+                        <Button onClick={()=> navigate('login')} className='px-4 py-2' variant='primary'>login</Button>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

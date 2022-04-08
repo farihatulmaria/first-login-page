@@ -9,7 +9,15 @@ body {
 .text-success {
   color: #275a53 !important;
 }
+.form-check-input:checked {
+  background-color: #275a54;
+  border-color: #275a54;
+}
 button {
   background: #275a53 !important;
   border: 0 !important;
+}
+label {
+  font-weight: 500;
+  letter-spacing: 1px;
 }
