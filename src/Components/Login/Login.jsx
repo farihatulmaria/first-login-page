@@ -1,11 +1,9 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from 'react';
 import { Button, Card, Container, FloatingLabel, Form } from 'react-bootstrap';
-import auth from '../../firebase.js';
 import './Login.css';
 const Login = () => {
     const [validated, setValidated] = useState(false);
-    const [email, setEmail] = useState();
+/*     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState('')
     const getEmail = (e) => {
@@ -13,7 +11,7 @@ const Login = () => {
     }
     const getPassword = (e) => {
         setPassword(e.target.value);
-    }
+    } */
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
@@ -22,7 +20,7 @@ const Login = () => {
       }
       setValidated(true);
 
-      signInWithEmailAndPassword(auth,email,password)
+/*       signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
           const user = userCredential.user;
           console.log(user);
@@ -30,7 +28,7 @@ const Login = () => {
       })
       .catch((error)=>{
         setError('Failed to login')
-      })
+      }) */
       
     };
     
@@ -49,7 +47,7 @@ const Login = () => {
                                     label="Username or Email"
                                     className="my-4">
 
-                                    <Form.Control onBlur={getEmail} type="text" placeholder="name@example.com" required />
+                                    <Form.Control type="text" placeholder="name@example.com" required />
                                     <Form.Control.Feedback type="invalid">Please add your user name or add your email</Form.Control.Feedback>
 
                                 </FloatingLabel>
@@ -59,7 +57,7 @@ const Login = () => {
                                     label="Password"
                                     className="my-4">
                                         
-                                    <Form.Control onBlur={getPassword} type="password" placeholder="1234"  required />
+                                    <Form.Control  type="password" placeholder="1234"  required />
 
                                     <Form.Control.Feedback type="invalid">Please add your password</Form.Control.Feedback>
 
@@ -78,9 +76,6 @@ const Login = () => {
                             <p className='text-center py-3 m-0'>
                                 Don’t have an account? 
                                 <a href="/create-account" className='text-success'> Create an account</a>
-                            </p>
-                            <p>
-                                {error}
                             </p>
                         </Card.Body>
                     </Card>
