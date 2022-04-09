@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Card, Container, FloatingLabel, Form } from 'react-bootstrap';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase';
 import './Login.css';
 const Login = () => {
     const [validated, setValidated] = useState(false);
-/*     const [email, setEmail] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [error, setError] = useState('')
-    const getEmail = (e) => {
-        setEmail(e.target.value);
-    }
-    const getPassword = (e) => {
-        setPassword(e.target.value);
-    } */
+    const [signInWithEmailAndPassword,user] = useSignInWithEmailAndPassword(auth);
+    
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
@@ -19,8 +16,8 @@ const Login = () => {
         event.stopPropagation();
       }
       setValidated(true);
-
-/*       signInWithEmailAndPassword(auth,email,password)
+      signInWithEmailAndPassword(email,password);
+/*    signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
           const user = userCredential.user;
           console.log(user);
@@ -31,7 +28,7 @@ const Login = () => {
       }) */
       
     };
-    
+    console.log(user);
     return (
         <section className='login'>
             <Container style={{minHeight:'70vh'}} className='d-flex align-items-center justify-content-center'>
@@ -41,13 +38,14 @@ const Login = () => {
                             <Card.Title> 
                                 <h3 className='fw-bold'>Login</h3>
                             </Card.Title>
-                            <Form noValidate validated={validated} onSubmit={handleSubmit} className='my-5'>
+                            <Form noValidate validated={validated} className='my-5'>
                                 <FloatingLabel
                                     controlId="floatingInput"
                                     label="Username or Email"
                                     className="my-4">
 
-                                    <Form.Control type="text" placeholder="name@example.com" required />
+                                    <Form.Control type="text" placeholder="name@example.com" required  value={email} onChange={(e) => setEmail(e.target.value)}/>
+
                                     <Form.Control.Feedback type="invalid">Please add your user name or add your email</Form.Control.Feedback>
 
                                 </FloatingLabel>
@@ -57,7 +55,7 @@ const Login = () => {
                                     label="Password"
                                     className="my-4">
                                         
-                                    <Form.Control  type="password" placeholder="1234"  required />
+                                    <Form.Control type="password" placeholder="1234" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
                                     <Form.Control.Feedback type="invalid">Please add your password</Form.Control.Feedback>
 
@@ -71,7 +69,7 @@ const Login = () => {
 
                             </Form>
 
-                            <Button className='w-100 py-2 fs-4 rounded-0' type="submit">Login</Button>
+                            <Button className='w-100 py-2 fs-4 rounded-0' type="submit" onClick={()=>handleSubmit()}>Login</Button>
 
                             <p className='text-center py-3 m-0'>
                                 Don’t have an account? 
