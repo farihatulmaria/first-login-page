@@ -13,9 +13,25 @@ body {
   background-color: #275a54;
   border-color: #275a54;
 }
-button {
+button,
+input[type="submit"] {
   background: #275a53 !important;
   border: 0 !important;
+  color: #fff;
+  padding: 10px 0;
+}
+.form-control {
+  border: 0;
+  border-bottom: 1px solid #b5b5b5;
+  border-radius: 0px;
+}
+.form-control:focus {
+  border-color: #275a53;
+  box-shadow: none;
+}
+button,
+input[type="submit"] {
+  border-radius: 3px;
 }
 label {
   font-weight: 500;
