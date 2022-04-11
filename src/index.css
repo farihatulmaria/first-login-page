@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.text-success {
+a {
   color: #275a53 !important;
 }
 .form-check-input:checked {
@@ -36,4 +36,7 @@ input[type="submit"] {
 label {
   font-weight: 500;
   letter-spacing: 1px;
+}
+.user-img {
+  width: 50px;
 }
