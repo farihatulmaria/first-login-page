@@ -1,4 +1,4 @@
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase';
@@ -20,8 +20,12 @@ const Header = () => {
                         <Nav.Link href="/service">Service</Nav.Link>
                         <Nav.Link href="/concerns">Concerns</Nav.Link>
                         <Nav.Link href="/event">Event</Nav.Link>
-                        <Nav.Link href="/contact">Contact</Nav.Link> photoURL*/}
-                       
+                        <Nav.Link href="/contact">Contact</Nav.Link>*/}
+                        <NavDropdown id="basic-nav-dropdown">
+                            <img className='user-img' src={user?.photoURL ? user?.photoURL : userImage} alt="" />
+                            <NavDropdown.Divider />
+                            <p>{user?.email}</p>
+                        </NavDropdown>
                         {
                             user?.uid ? <img className='user-img' src={user?.photoURL ? user?.photoURL : userImage} alt="" />
                             :

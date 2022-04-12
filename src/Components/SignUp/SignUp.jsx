@@ -1,25 +1,28 @@
+import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { Card, Container, FloatingLabel, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Button, Card, Container, FloatingLabel, Form } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase';
 
 const SignUp = () => {
     const [email, setEmail] = useState();
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
+    // const [firstName, setFirstName] = useState();
+    // const [lastName, setLastName] = useState();
     const [passWord, setPassWord] = useState();
     const [errorMessage, setErrorMessage] = useState();
     const [confirmPassWord, setConfirmPassWord] = useState();
     const [createUserWithEmailAndPassword,] = useCreateUserWithEmailAndPassword(auth);
     
 
-    const getUserFirstName = (e) => {
-        setFirstName(e.target.value);
-    }
-    const getUserLastName = (e) => {
-        setLastName(e.target.value);
-    }
+    // const getUserFirstName = (e) => {
+    //     setFirstName(e.target.value);
+    // }
+    // const getUserLastName = (e) => {
+    //     setLastName(e.target.value);
+    // }
+
     const getUserEmail = (e) => {
         setEmail(e.target.value);
     }
@@ -35,9 +38,9 @@ const SignUp = () => {
         if(passWord !== confirmPassWord){
             setErrorMessage("Passwords Didn't Matched");
         }
-            createUserWithEmailAndPassword(email,passWord);
-    };
-    
+        createUserWithEmailAndPassword(email,passWord);
+    }; 
+
     return (
         <section className='sign-up'>
             <Container style={{minHeight:'70vh'}} className='d-flex align-items-center justify-content-center'>
@@ -48,7 +51,7 @@ const SignUp = () => {
                                 <h3 className="fw-bold">Create an account</h3>
                             </Card.Title>
                             <Form onSubmit={handleSubmit} className='my-5'>
-                                <FloatingLabel
+                               {/*  <FloatingLabel
                                     controlId="floatingInput"
                                     label="First Name"
                                     className="mb-4"
@@ -62,7 +65,7 @@ const SignUp = () => {
                                     className="mb-4"
                                 >
                                     <Form.Control onBlur={getUserLastName} type="text"  placeholder="name" />
-                                </FloatingLabel>
+                                </FloatingLabel> */}
                                 
                                 <FloatingLabel
                                     controlId="floatingInput"
@@ -88,13 +91,19 @@ const SignUp = () => {
                                     <Form.Control onBlur={getUserConfirmPassword} type="password"  placeholder="123456" />
                                 </FloatingLabel>
 
-                                <input type="submit" value="Create An Account" className='w-100' /> 
+                                <input type="submit" value="Create An Account" className='w-100'/> 
                             </Form>
                             <p className='text-danger text-center fw-bold'>{errorMessage}</p>
 
                             <p className='text-center fw-normal'>Already Have An Account? <Link to={'/login'}>Login</Link></p>
                         </Card.Body>
                     </Card>
+                    <p className='my-4 text-center or'>Or</p>
+                    <div>
+                        <Button className='provider w-100 my-2'> <FontAwesomeIcon icon={faFacebookF} className='facebook' /> Continue With Facebook</Button>
+
+                        <Button className='provider w-100 my-2'> <FontAwesomeIcon icon={faGoogle} className='google' /> Continue With Google</Button>
+                    </div>
                 </div>
             </Container>
         </section>
